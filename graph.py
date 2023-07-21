@@ -10,15 +10,16 @@ class Graph():
         self.token, self.username, self.id = '', '', ''
         self.header = None
 
-        # Try to find user.txt file that contains the user's username, token, and graph id to make requests, and create it if it's not found
+        # Try to find the user.txt file that contains the user's username, token, and graph id to make requests, and create it if it's not found
+        # The user.txt file consists of the user's username on the first line, the user's token on the second line, and the graph id on the last line
         try:
-            with open('./Projects/DailyStudy/user.txt', mode='r') as file:
+            with open('./user.txt', mode='r') as file:
                 content = file.readlines()
                 self.username = content[0].strip()
                 self.token = content[1].strip()
                 self.id = content[2].strip()
         except:
-            with open('./Projects/DailyStudy/user.txt', mode='w') as file:
+            with open('./user.txt', mode='w') as file:
                 self.make_user()
                 file.write(self.username + '\n' + self.token + '\n' + self.id)
 
